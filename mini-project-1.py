@@ -9,6 +9,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection.tests import test_split
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.model_selection import GridSearchCV
+from sklearn import svm, datasets
+from sklearn import metrics
 
 labels = 'Post', 'Emotion', 'Sentiment'
 
@@ -20,31 +23,60 @@ def main():
     sentences = df[labels[0]]
 
     # Print to analyse dataset
-    # draw_dataset_analysis(emotions=emotions, sentiments=sentiments)
+    # draw_dataset_analysis(df)
 
-    process_dataset(df)
+    # process_dataset_base_mnb(df)
+    process_dataset_top_mnb(df)
 
 
-def process_dataset(dataframe: pd.DataFrame):
-
-    post_train, post_test, sentiment_train, sentiment_test = test_split.train_test_split(
-        dataframe[labels[0]].astype(str).tolist(),
-        dataframe[labels[1]].astype(str).tolist(),
-        test_size=0.20)
+def process_dataset_base_mnb(dataframe: pd.DataFrame):
 
     le = LabelEncoder()
-    Y = le.fit_transform(sentiment_train)
+    Y = le.fit_transform(dataframe[labels[1]].astype(str).tolist())
 
     post_vectorizer = CountVectorizer()
-    X = post_vectorizer.fit_transform(post_train)
+    X = post_vectorizer.fit_transform(dataframe[labels[0]].astype(str).tolist())
     post_vectorizer.get_feature_names_out()
 
+    post_train, post_test, sentiment_train, sentiment_test = test_split.train_test_split(
+        X,
+        Y,
+        test_size=0.20)
+
     clf = MultinomialNB()
-    clf.fit(X, Y)
+    clf.fit(post_train, sentiment_train)
 
-    X2 = post_vectorizer.transform(post_test)
-    predic = clf.predict(X2)
+    predic = clf.predict(post_test)
 
+    df = pd.DataFrame(le.inverse_transform(predic))
+    sent_predic = df.pivot_table(columns=0, aggfunc='size')
+
+    fig = plt.pie(sent_predic.values, labels=sent_predic.keys(), autopct='%1.1f%%',
+             shadow=False, startangle=90)
+    plt.show()
+
+def process_dataset_top_mnb(dataframe: pd.DataFrame):
+    le = LabelEncoder()
+    Y = le.fit_transform(dataframe[labels[1]].astype(str).tolist())
+
+    post_vectorizer = CountVectorizer()
+    X = post_vectorizer.fit_transform(dataframe[labels[0]].astype(str).tolist())
+    post_vectorizer.get_feature_names_out()
+
+    post_train, post_test, sentiment_train, sentiment_test = test_split.train_test_split(
+        X,
+        Y,
+        test_size=0.2)
+
+    clf = MultinomialNB()
+    clf.fit(post_train, sentiment_train)
+
+    svc = svm.SVC()
+    param_grid = {'alpha': [0, 0.25, 0.5, 0.75]}
+    clfCV = GridSearchCV(clf, param_grid)
+    print(clfCV.fit(post_test, sentiment_test))
+
+    predic = clfCV.predict(post_test)
     df = pd.DataFrame(le.inverse_transform(predic))
     sent_predic = df.pivot_table(columns=0, aggfunc='size')
 
