@@ -84,7 +84,7 @@ def process_dataset_top_mlp(dataframe: pd.DataFrame):
         'hidden_layer_sizes': [(30,50),(10,10,10)],
         'solver': ['adam', 'sgd']
     }
-    clfCV = GridSearchCV(MLPClassifier(max_iter=1), param_grid)
+    clfCV = GridSearchCV(MLPClassifier(max_iter=3), param_grid)
     print(clfCV.fit(post_test, sentiment_test))
 
     print('joe')
