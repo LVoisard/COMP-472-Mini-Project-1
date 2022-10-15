@@ -13,6 +13,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn import svm, datasets
 from sklearn import metrics
 from sklearn.neural_network import MLPClassifier
+from sklearn.tree import DecisionTreeClassifier
 
 labels = 'Post', 'Emotion', 'Sentiment'
 
@@ -24,13 +25,16 @@ def main():
     sentences = df[labels[0]]
 
     # Print to analyse dataset
-    #draw_dataset_analysis(df)
+    # draw_dataset_analysis(df)
 
     # process_dataset_base_mnb(df)
     # process_dataset_top_mnb(df)
 
-    #process_dataset_base_mlp(df)
-    process_dataset_top_mlp(df)
+    # process_dataset_base_dt(df)
+    process_dataset_top_dt(df)
+
+    # process_dataset_base_mlp(df)
+    # process_dataset_top_mlp(df)
 
 
 def process_dataset_base_mlp(dataframe: pd.DataFrame):
@@ -62,6 +66,7 @@ def process_dataset_base_mlp(dataframe: pd.DataFrame):
     fig = plt.pie(sent_predic.values, labels=sent_predic.keys(), autopct='%1.1f%%',
              shadow=False, startangle=90)
     plt.show()
+
 
 def process_dataset_top_mlp(dataframe: pd.DataFrame):
 
@@ -97,6 +102,63 @@ def process_dataset_top_mlp(dataframe: pd.DataFrame):
              shadow=False, startangle=90)
     plt.show()
 
+
+def process_dataset_base_dt(dataframe: pd.DataFrame):
+    le = LabelEncoder()
+    Y = le.fit_transform(dataframe[labels[1]].astype(str).tolist())
+
+    post_vectorizer = CountVectorizer()
+    X = post_vectorizer.fit_transform(dataframe[labels[0]].astype(str).tolist())
+    post_vectorizer.get_feature_names_out()
+
+    post_train, post_test, sentiment_train, sentiment_test = test_split.train_test_split(
+        X,
+        Y,
+        test_size=0.20)
+
+    clf = DecisionTreeClassifier()
+    clf.fit(post_train, sentiment_train)
+
+    predic = clf.predict(post_test)
+    df = pd.DataFrame(le.inverse_transform(predic))
+    sent_predic = df.pivot_table(columns=0, aggfunc='size')
+    print(sent_predic)
+
+    fig = plt.pie(sent_predic.values, labels=sent_predic.keys(), autopct='%1.1f%%',
+             shadow=False, startangle=90)
+    plt.show()
+
+
+def process_dataset_top_dt(dataframe: pd.DataFrame):
+    le = LabelEncoder()
+    Y = le.fit_transform(dataframe[labels[1]].astype(str).tolist())
+
+    post_vectorizer = CountVectorizer()
+    X = post_vectorizer.fit_transform(dataframe[labels[0]].astype(str).tolist())
+    post_vectorizer.get_feature_names_out()
+
+    post_train, post_test, sentiment_train, sentiment_test = test_split.train_test_split(
+        X,
+        Y,
+        test_size=0.2)
+
+    param_grid = {
+        'criterion': ['entropy'],
+        'max_depth': [2, 8],
+        'min_samples_split': [2, 4, 6]
+    }
+    clfCV = GridSearchCV(DecisionTreeClassifier(), param_grid)
+    print(clfCV.fit(post_test, sentiment_test))
+
+    predic = clfCV.predict(post_test)
+    df = pd.DataFrame(le.inverse_transform(predic))
+    sent_predic = df.pivot_table(columns=0, aggfunc='size')
+
+    fig = plt.pie(sent_predic.values, labels=sent_predic.keys(), autopct='%1.1f%%',
+             shadow=False, startangle=90)
+    plt.show()
+
+
 def process_dataset_base_mnb(dataframe: pd.DataFrame):
 
     le = LabelEncoder()
@@ -123,6 +185,7 @@ def process_dataset_base_mnb(dataframe: pd.DataFrame):
              shadow=False, startangle=90)
     plt.show()
 
+
 def process_dataset_top_mnb(dataframe: pd.DataFrame):
     le = LabelEncoder()
     Y = le.fit_transform(dataframe[labels[1]].astype(str).tolist())
@@ -147,7 +210,6 @@ def process_dataset_top_mnb(dataframe: pd.DataFrame):
     fig = plt.pie(sent_predic.values, labels=sent_predic.keys(), autopct='%1.1f%%',
              shadow=False, startangle=90)
     plt.show()
-
 
 
 def parse_dataset():
