@@ -93,6 +93,10 @@ def main():
     # 3.1. Word2Vec import -------------------------
     model = load('word2vec-google-news-300')
 
+    # 3.8 Use other embedding models ---------------
+    # model = load('fasttext-wiki-news-subwords-300')
+    # model = load('glove-wiki-gigaword-200')
+
     # 3.2. Tokenizer -------------------------------
     posts_vec_train, posts_vec_test = tokenizer(dataset)
 
