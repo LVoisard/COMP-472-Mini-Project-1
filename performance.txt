@@ -1479,3 +1479,227 @@ SentimentConfusion Matrix
    macro avg       0.55      0.51      0.51     34364
 weighted avg       0.57      0.57      0.56     34364
  
+
+ =====3.7===== 
+Base MLP
+Emotion
+
+ Classification Report 
+
+                precision    recall  f1-score   support
+
+    admiration       0.06      0.01      0.01      2034
+     amusement       0.04      0.00      0.00      1215
+         anger       0.02      0.00      0.00      1039
+     annoyance       0.02      0.00      0.00      1640
+      approval       0.05      0.01      0.01      2268
+        caring       0.00      0.00      0.00       729
+     confusion       0.00      0.00      0.00       988
+     curiosity       0.04      0.00      0.00      1255
+        desire       0.00      0.00      0.00       401
+disappointment       0.00      0.00      0.00       905
+   disapproval       0.00      0.00      0.00      1567
+       disgust       0.00      0.00      0.00       544
+ embarrassment       0.00      0.00      0.00       288
+    excitement       0.00      0.00      0.00       593
+          fear       0.00      0.00      0.00       380
+     gratitude       0.05      0.00      0.00      1447
+         grief       0.00      0.00      0.00        74
+           joy       0.00      0.00      0.00       906
+          love       0.04      0.00      0.00       933
+   nervousness       0.00      0.00      0.00       162
+       neutral       0.32      0.98      0.49     11061
+      optimism       0.07      0.00      0.00       913
+         pride       0.00      0.00      0.00       149
+   realization       0.00      0.00      0.00       949
+        relief       0.00      0.00      0.00       175
+       remorse       0.00      0.00      0.00       313
+       sadness       0.06      0.00      0.00       763
+      surprise       0.08      0.00      0.00       673
+
+      accuracy                           0.32     34364
+     macro avg       0.03      0.04      0.02     34364
+  weighted avg       0.12      0.32      0.16     34364
+
+Sentiment
+
+ Classification Report 
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.11      0.01      0.02      3865
+    negative       0.22      0.08      0.11      7675
+     neutral       0.32      0.37      0.34     11061
+    positive       0.34      0.54      0.42     11763
+
+    accuracy                           0.32     34364
+   macro avg       0.25      0.25      0.23     34364
+weighted avg       0.28      0.32      0.28     34364
+
+Top MLP
+Emotion
+
+ Classification Report 
+
+                precision    recall  f1-score   support
+
+    admiration       0.00      0.00      0.00      2034
+     amusement       0.00      0.00      0.00      1215
+         anger       0.00      0.00      0.00      1039
+     annoyance       0.00      0.00      0.00      1640
+      approval       0.00      0.00      0.00      2268
+        caring       0.00      0.00      0.00       729
+     confusion       0.00      0.00      0.00       988
+     curiosity       0.00      0.00      0.00      1255
+        desire       0.00      0.00      0.00       401
+disappointment       0.00      0.00      0.00       905
+   disapproval       0.00      0.00      0.00      1567
+       disgust       0.00      0.00      0.00       544
+ embarrassment       0.00      0.00      0.00       288
+    excitement       0.00      0.00      0.00       593
+          fear       0.00      0.00      0.00       380
+     gratitude       0.00      0.00      0.00      1447
+         grief       0.00      0.00      0.00        74
+           joy       0.00      0.00      0.00       906
+          love       0.00      0.00      0.00       933
+   nervousness       0.00      0.00      0.00       162
+       neutral       0.32      1.00      0.49     11061
+      optimism       0.00      0.00      0.00       913
+         pride       0.00      0.00      0.00       149
+   realization       0.00      0.00      0.00       949
+        relief       0.00      0.00      0.00       175
+       remorse       0.00      0.00      0.00       313
+       sadness       0.00      0.00      0.00       763
+      surprise       0.00      0.00      0.00       673
+
+      accuracy                           0.32     34364
+     macro avg       0.01      0.04      0.02     34364
+  weighted avg       0.10      0.32      0.16     34364
+
+Sentiment
+
+ Classification Report 
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.00      0.00      0.00      3865
+    negative       0.00      0.00      0.00      7675
+     neutral       0.00      0.00      0.00     11061
+    positive       0.34      1.00      0.51     11763
+
+    accuracy                           0.34     34364
+   macro avg       0.09      0.25      0.13     34364
+weighted avg       0.12      0.34      0.17     34364
+
+
+ =====3.7===== 
+Base MLP
+Emotion
+
+ Classification Report 
+
+                precision    recall  f1-score   support
+
+    admiration       0.06      0.01      0.01      2034
+     amusement       0.04      0.00      0.00      1215
+         anger       0.02      0.00      0.00      1039
+     annoyance       0.02      0.00      0.00      1640
+      approval       0.05      0.01      0.01      2268
+        caring       0.00      0.00      0.00       729
+     confusion       0.00      0.00      0.00       988
+     curiosity       0.04      0.00      0.00      1255
+        desire       0.00      0.00      0.00       401
+disappointment       0.00      0.00      0.00       905
+   disapproval       0.00      0.00      0.00      1567
+       disgust       0.00      0.00      0.00       544
+ embarrassment       0.00      0.00      0.00       288
+    excitement       0.00      0.00      0.00       593
+          fear       0.00      0.00      0.00       380
+     gratitude       0.05      0.00      0.00      1447
+         grief       0.00      0.00      0.00        74
+           joy       0.00      0.00      0.00       906
+          love       0.04      0.00      0.00       933
+   nervousness       0.00      0.00      0.00       162
+       neutral       0.32      0.98      0.49     11061
+      optimism       0.07      0.00      0.00       913
+         pride       0.00      0.00      0.00       149
+   realization       0.00      0.00      0.00       949
+        relief       0.00      0.00      0.00       175
+       remorse       0.00      0.00      0.00       313
+       sadness       0.06      0.00      0.00       763
+      surprise       0.08      0.00      0.00       673
+
+      accuracy                           0.32     34364
+     macro avg       0.03      0.04      0.02     34364
+  weighted avg       0.12      0.32      0.16     34364
+
+Sentiment
+
+ Classification Report 
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.11      0.01      0.02      3865
+    negative       0.22      0.08      0.11      7675
+     neutral       0.32      0.37      0.34     11061
+    positive       0.34      0.54      0.42     11763
+
+    accuracy                           0.32     34364
+   macro avg       0.25      0.25      0.23     34364
+weighted avg       0.28      0.32      0.28     34364
+
+Top MLP
+Emotion
+
+ Classification Report 
+
+                precision    recall  f1-score   support
+
+    admiration       0.00      0.00      0.00      2034
+     amusement       0.00      0.00      0.00      1215
+         anger       0.00      0.00      0.00      1039
+     annoyance       0.00      0.00      0.00      1640
+      approval       0.00      0.00      0.00      2268
+        caring       0.00      0.00      0.00       729
+     confusion       0.00      0.00      0.00       988
+     curiosity       0.00      0.00      0.00      1255
+        desire       0.00      0.00      0.00       401
+disappointment       0.00      0.00      0.00       905
+   disapproval       0.00      0.00      0.00      1567
+       disgust       0.00      0.00      0.00       544
+ embarrassment       0.00      0.00      0.00       288
+    excitement       0.00      0.00      0.00       593
+          fear       0.00      0.00      0.00       380
+     gratitude       0.00      0.00      0.00      1447
+         grief       0.00      0.00      0.00        74
+           joy       0.00      0.00      0.00       906
+          love       0.00      0.00      0.00       933
+   nervousness       0.00      0.00      0.00       162
+       neutral       0.32      1.00      0.49     11061
+      optimism       0.00      0.00      0.00       913
+         pride       0.00      0.00      0.00       149
+   realization       0.00      0.00      0.00       949
+        relief       0.00      0.00      0.00       175
+       remorse       0.00      0.00      0.00       313
+       sadness       0.00      0.00      0.00       763
+      surprise       0.00      0.00      0.00       673
+
+      accuracy                           0.32     34364
+     macro avg       0.01      0.04      0.02     34364
+  weighted avg       0.10      0.32      0.16     34364
+
+Sentiment
+
+ Classification Report 
+
+              precision    recall  f1-score   support
+
+   ambiguous       0.00      0.00      0.00      3865
+    negative       0.00      0.00      0.00      7675
+     neutral       0.00      0.00      0.00     11061
+    positive       0.34      1.00      0.51     11763
+
+    accuracy                           0.34     34364
+   macro avg       0.09      0.25      0.13     34364
+weighted avg       0.12      0.34      0.17     34364
+
